@@ -1,0 +1,37 @@
+// bot_save_servers
+{
+	name: string,
+	hostname: string,
+	auto_connect: boolean,
+	ssl: boolean,
+	password: string,
+	nickserv_password: String,
+}
+
+// users
+{
+	nickname: String,
+	sub_nickname: String,
+	irc_servers: [
+		{
+			name: string,
+			hostname: string,
+			auto_connect: boolean,
+			ssl: boolean,
+			password: string,
+			nickserv_password: String,
+		}
+	],
+	settings: {
+	}
+}
+
+// message_logs
+{
+	who: String,
+	channel: String,
+	message: String,
+	type: String,
+	posted_at: int,
+	server_name: String,
+}
