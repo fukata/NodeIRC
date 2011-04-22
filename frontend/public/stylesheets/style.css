@@ -99,3 +99,40 @@ ui
 	vertical-align: top;
 	margin-left: 5px;
 }
+
+div.tabs-contents {
+}
+
+div.tabs-contents ul {
+	margin: 0;
+	padding: 0;
+}
+
+div.tabs-contents ul li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.tabs-contents > div.messages {
+	float: left;
+	overflow: auto;
+}
+div.tabs-contents > div.messages ul li:nth-child(even) {
+	background-color: #eeeeee;
+}
+
+div.tabs-contents > div.messages ul li:nth-child(odd) {
+}
+
+div.tabs-contents > div.users {
+	float: left;
+	text-align: right;
+	border-left: 1px solid #dddddd;
+	width: 200px;
+	overflow: auto;
+}
+
+div.tabs-contents > div.users > ul > li > a {
+	width: 190px;
+}
