@@ -69,6 +69,12 @@ ui
 	font-weight: bold;
 	margin-left: 5px;
 	padding-top: 2px;
+	float: left;
+}
+
+#header-navi-container > div.user-navi {
+	float: right;
+	margin-right: 5px;
 }
 
 #settings-sidebar-container {
