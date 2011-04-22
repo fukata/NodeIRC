@@ -20,11 +20,11 @@ app.configure ->
 	app.use app.router
 	app.use express.static __dirname + '/public'
 
-app.configure 'development', ->
+app.configure 'development', () ->
 	app.use express.errorHandler { dumpExceptions: true, showStack: true }
 
 
-app.configure 'production', ->
+app.configure 'production', () ->
 	app.use express.errorHandler
 
 ###
