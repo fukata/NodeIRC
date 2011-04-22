@@ -1,2 +1,3 @@
 /db/*.mwb.bak
 /frontend/logs/*
+/frontend/pids/*
