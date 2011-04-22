@@ -1,8 +1,91 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@CHARSET "UTF-8";
+
+/* ================================================
+css initialize
+================================================ */
+* {
+	margin:0;
+	padding:0;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+	color:#0C5F95;
+	text-decoration:none;
+}
+
+a:link {
+	color:#0C5F95;
+	text-decoration:none;
+}
+
+a:visited {
+	color:#0C5F95;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#0C5F95;
+	text-decoration:underline;
+}
+
+body {
+	background-color: #FFFFFF;
+}
+
+/* ================================================
+clearfix
+================================================ */
+.clearfix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+
+.clearfix{
+    display:inline-block;
+    min-height:1%;  /* for IE 7*/
+}
+
+/* Hides from IE-mac */
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* End hide from IE-mac */
+
+/* ================================================
+ui
+================================================ */
+#ui-container {
+}
+
+#header-navi-container {
+	height: 20px;
+	border-bottom: 1px solid #dddddd;
+}
+
+#header-navi-container .title {
+	color: #FFFFFF;
+	font-weight: bold;
+	margin-left: 5px;
+	padding-top: 2px;
+}
+
+#settings-sidebar-container {
+	float: left;
+	width: 200px;
+	border-right: 1px solid #dddddd;
+}
+
+#contents-container {
+	float: left;
+}
+
+#channel-container {
+}
+
+#say-container {
+	height: 150px;
+	border-top: 1px solid #dddddd;
 }

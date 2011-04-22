@@ -39,7 +39,7 @@ Routes
 ###
 
 app.get '/', (req,res) ->
-	res.render 'index', {title: 'Express'}
+	res.render 'index', {title: 'NodeIRC beta'}
 
 
 ###
