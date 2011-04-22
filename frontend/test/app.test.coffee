@@ -9,7 +9,7 @@ assert = require 'assert'
 
 
 module.exports = {
-	'GET /': () ->
+	'GET /': ->
 		assert.response app,
 		{ url: '/' },
 		{ status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' }},

@@ -1,7 +1,9 @@
 # What's this
 ## Dependences
 ### node.js
-* IRC: https://github.com/fwg/nodejs.irc
-* WebSocket: https://github.com/guille/node.websocket.js/
-* Express: http://expressjs.com/
+    npm install express
+    npm install ejs
+    npm install io.socket
+    npm install mongoose
+    npm install underscore
 ## Initialize Develop Environment
