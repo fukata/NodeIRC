@@ -118,11 +118,28 @@ div.tabs-contents > div.messages {
 	float: left;
 	overflow: auto;
 }
+
+div.tabs-contents > div.messages ul {
+	padding: 0 5px;
+}
+
 div.tabs-contents > div.messages ul li:nth-child(even) {
-	background-color: #eeeeee;
+	background-color: #DFEBF7;
 }
 
 div.tabs-contents > div.messages ul li:nth-child(odd) {
+}
+
+div.tabs-contents > div.messages div.message {
+	padding: 0 3px;
+}
+
+div.tabs-contents > div.messages div.message > span.say_date {
+	margin-right: 10px;
+	color: #FF0084;
+}
+
+div.tabs-contents > div.messages div.message > span.say {
 }
 
 div.tabs-contents > div.users {

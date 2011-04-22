@@ -20,7 +20,7 @@ $(function(){
 		}
 	});
 	var $say_container = $('#say-container');
-	var $say = $('#say');
+	var $say = $('#say').focus();
 
 	var resize_ui = function() {
 		var w = $window.width();
