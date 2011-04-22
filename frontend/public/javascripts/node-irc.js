@@ -1,4 +1,6 @@
 $(function(){
+	$("button").button();
+
 	var $window = $(window);
 	var $ui_container = $('#ui-container');
 	var $header_navi_container = $('#header-navi-container');
@@ -6,6 +8,8 @@ $(function(){
 	var $contents_container = $('#contents-container');
 	var $channel_container = $('#channel-container');
 	var $say_container = $('#say-container');
+	var $say = $('#say');
+
 	var resize_ui = function() {
 		var w = $window.width();
 		var h = $window.height();
@@ -23,6 +27,9 @@ $(function(){
 
 		var sch = $say_container.outerHeight();
 		$channel_container.height(h - sch - hnh);
+
+		var scw = $say_container.outerWidth();
+		$say.width(scw - 100);
 	};
 	resize_ui();
 	$window.bind("resize", function(){

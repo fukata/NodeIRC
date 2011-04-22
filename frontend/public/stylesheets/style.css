@@ -15,8 +15,7 @@ a {
 }
 
 a:link {
-	color:#0C5F95;
-	text-decoration:none;
+	color:#0C5F95; text-decoration:none;
 }
 
 a:visited {
@@ -86,6 +85,16 @@ ui
 }
 
 #say-container {
-	height: 150px;
+	height: 100px;
 	border-top: 1px solid #dddddd;
+}
+
+#say {
+}
+
+#say-btn {
+	width: 82px;
+	height: 82px;
+	vertical-align: top;
+	margin-left: 5px;
 }
