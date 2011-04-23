@@ -54,6 +54,24 @@ clearfix
 /* End hide from IE-mac */
 
 /* ================================================
+common style
+================================================ */
+.hide {
+	display: none;
+}
+
+.errors {
+	border: 1px solid #FF0000;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+.errors > .error {
+	border-left: 5px solid #FF0000;
+	margin-left: 10px;
+}
+
+/* ================================================
 ui
 ================================================ */
 #ui-container {
@@ -158,4 +176,23 @@ div.tabs-contents > div.users {
 
 div.tabs-contents > div.users > ul > li > a {
 	width: 190px;
+}
+
+/* ================================================
+channel-add-dialog
+================================================ */
+#channel-add-dialog {
+}
+
+#channel-add-dialog div.items > div.item {
+}
+
+#channel-add-dialog div.items > div.item > div.label {
+	float: left;
+	width: 80px;
+}
+
+#channel-add-dialog .submit-buttons {
+	text-align: center;
+	margin-top: 10px;
 }

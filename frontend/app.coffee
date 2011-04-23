@@ -38,9 +38,12 @@ app.configure 'production', ->
 Routes
 ###
 
-app.get '/', (req,res) ->
+app.get '/', (req, res) ->
 	res.render 'index', {title: 'NodeIRC beta'}
 
+app.post '/channel', (req, res) ->
+	res.contentType 'application/json'
+	res.render 'channel_add', {layout: false}
 
 ###
 Only listen on $ node app.js

@@ -8,6 +8,18 @@ $(function(){
 	var $contents_container = $('#contents-container');
 	var $channel_container = $('#channel-container');
 	var $channel_tabs = $('#channel-tabs');
+	var $cha_dialog = $('#channel-add-dialog').dialog({
+		autoOpen: false,
+		draggable: false,
+		width: '500',
+		height: '400',
+		maxWidth: '500',
+		maxHeight: '400',
+		modal: true,
+		resizable: false,
+		stack: false
+	});
+
 	$channel_tabs.tabs({
 		select: function(event, ui) {
 			var $tab = $(ui.tab);
@@ -16,6 +28,7 @@ $(function(){
 			}
 
 			console.log('channel-add');
+			$cha_dialog.dialog('open');
 			return false;
 		}
 	});
@@ -67,5 +80,57 @@ $(function(){
 	resize_ui();
 	$window.bind("resize", function(){
 		resize_ui();
+	});
+
+	$('#channel-add-btn').click(function(){
+		console.log('channel-add-btn');
+		var $self = $(this);
+		var field_enable = function(enabled) {
+			enabled = !enabled || false;
+			$('input, checkbox, select', $cha_dialog).attr('disabled', enabled);
+			$self.attr('disabled', enabled);
+			if (enabled) {
+				$('.progress', $cha_dialog).show();
+			} else {
+				$('.progress', $cha_dialog).hide();
+			}
+		}
+		field_enable(false);
+
+		$.ajax({
+			cache: false,
+			url: "/channel",
+			type: "POST",
+			dataType: "json",
+			timeout: 20000,
+			success: function(data, dataType) {
+				console.log('channel-add success');
+				console.log(data);
+				$('.errors', $cha_dialog).hide();
+				// add channel tab
+				var channel = data.channel;
+				var contents = data.contents;
+				var select = $channel_tabs.tabs('length') - 1;
+				$channel_tabs.tabs('add', 'javascript:void(0)', channel, select);
+				var $tab_link = $('ul.ui-tabs-nav > li', $channel_tabs).eq(select).find('a').eq(0);
+				var tab_id = $tab_link.attr('href');
+				console.log("tab_id: %s", tab_id);
+				var $tab_content = $(tab_id);
+				$tab_content.html(contents);
+				$channel_tabs.tabs('select', select);
+
+				$cha_dialog.dialog('close');
+			},
+			error: function(request, textStatus, errorThrown) {
+				console.log('channel-add error');
+				error = request.responseText || errorThrown;
+				$('.errors', $cha_dialog).show();
+				$('.errors > .error', $cha_dialog).eq(0).text(error);
+			},
+			complete: function(request, textStatus) {
+				console.log('channel-add complete');
+				field_enable(true);
+			}
+		});
 	});
 });

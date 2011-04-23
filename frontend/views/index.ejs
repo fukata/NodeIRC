@@ -15,7 +15,7 @@
 			<div id="channel-tabs">
 				<ul>
 					<li><a href="#tabs-ch-dev">#dev</a></li>
-					<li><a href="javascript:void(0)" id="channel-add">+</a></li>
+					<li><a href="javascript:void(0)" id="channel-add" title="チャンネルを追加">+</a></li>
 				</ul>
 				<div id="tabs-ch-dev" class="tabs-contents clearfix">
 					<div class="messages">
@@ -73,6 +73,46 @@
 		<div id="say-container">
 			<textarea name="say" id="say"></textarea><button id="say-btn">送信</button>
 		</div>
+	</div>
+
+</div>
+
+<div id="channel-add-dialog" class="hide" title="チャンネルを追加">
+	<div class="hide errors">
+		<div class="error"></div>
+	</div>
+	<div class="items">
+		<div class="item">
+			<div class="label">Host：</div>
+			<input name="host" type="text" value="" maxlength="128" size="20"/>
+		</div>
+		<div class="item">
+			<div class="label">Port：</div>
+			<input name="port" type="text" value="6667" maxlength="5" size="5"/>
+		</div>
+		<div class="item">
+			<div class="label">SSL：</div>
+			<input name="ssl" type="checkbox" value="1"/>
+		</div>
+		<div class="item">
+			<div class="label">Password：</div>
+			<input name="password" type="text" value="" maxlength="128" size="20"/>
+		</div>
+		<div class="item">
+			<div class="label">Nickname：</div>
+			<input name="nickname" type="text" value="" maxlength="20" size="20"/>
+		</div>
+		<div class="item">
+			<div class="label">Channel：</div>
+			<input name="channel" type="text" value="" maxlength="128" size="20"/>
+		</div>
+
+	</div>
+	<div class="submit-buttons">
+		<div class="hide progress">
+			<img src="/images/loading-bar.gif"/>
+		</div>
+		<button id="channel-add-btn">追加</button>
 	</div>
 
 </div>
