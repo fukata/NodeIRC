@@ -166,17 +166,39 @@ div.tabs-contents > div.messages div.message > span.say_date {
 div.tabs-contents > div.messages div.message > span.say {
 }
 
-div.tabs-contents > div.users {
+div.tabs-contents > div.sidebar {
 	float: left;
-	text-align: right;
-	border-left: 1px solid #dddddd;
-	width: 200px;
-	overflow: auto;
 }
 
-div.tabs-contents > div.users > ul > li > a {
+div.tabs-contents > div.sidebar > div.menu {
+	border-bottom: 1px solid #dddddd;
+	margin-bottom: 5px;
+	padding-bottom: 2px;
+}
+
+div.tabs-contents > div.sidebar > div.menu div.icon {
+	width: 24px;
+	height: 16px;
+	margin: 2px;
+    padding: 4px 0;
+	cursor: pointer;
+	float: right;
+}
+div.tabs-contents > div.sidebar > div.menu div.icon > .ui-icon {
+	margin: 0 4px;
+}
+
+div.tabs-contents > div.sidebar > div.users {
+	text-align: right;
+	width: 200px;
+	overflow: auto;
+	margin-top: 5px;
+}
+
+div.tabs-contents > div.sidebar > div.users > ul > li > a {
 	width: 190px;
 }
+
 
 /* ================================================
 channel-add-dialog

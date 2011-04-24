@@ -1,6 +1,4 @@
 $(function(){
-	$("button, div.users > ul > li > a").button();
-
 	var $window = $(window);
 	var $ui_container = $('#ui-container');
 	var $header_navi_container = $('#header-navi-container');
@@ -36,6 +34,8 @@ $(function(){
 	var $say = $('#say').focus();
 
 	var resize_ui = function() {
+		$("button, div.users > ul > li > a").button();
+
 		var w = $window.width();
 		var h = $window.height();
 		var hnh = $header_navi_container.outerHeight();
@@ -61,7 +61,9 @@ $(function(){
 		$('div.tabs-contents').each(function(){
 			var $contents = $(this);
 			var $messages = $('div.messages', $contents);
-			var $users = $('div.users', $contents);
+			var $sidebar = $('div.sidebar', $contents);
+			var $menu = $('div.menu', $sidebar);
+			var $users = $('div.users', $sidebar);
 			var uw = $users.outerWidth();
 			//console.log("width: %s, outerWidth: %s, innerWidth: %s", $contents.width(), $contents.outerWidth(), $contents.innerWidth());
 			$messages.width(~~($contents.width() - uw));
@@ -70,10 +72,11 @@ $(function(){
 			var contents_offset = $contents.outerHeight() - $contents.height();
 			var cth = $channel_tabs.height();
 			console.log("tabs.height: %s, contents_offset: %s, cth: %s", $tabs.height(), contents_offset, cth);
-			var ch = cth - $tabs.outerHeight() - contents_offset;
+			var ch = ~~(cth - $tabs.outerHeight() - contents_offset);
 			$contents.height(ch);
 			$messages.height(ch);
-			$users.height(ch);
+			$sidebar.height(ch);
+			$users.height(ch - $menu.outerHeight());
 		});
 	};
 
@@ -109,16 +112,29 @@ $(function(){
 				$('.errors', $cha_dialog).hide();
 				// add channel tab
 				var channel = data.channel;
-				var contents = data.contents;
+				var contents = $('<div></div>').html(data.contents).text();
 				var select = $channel_tabs.tabs('length') - 1;
 				$channel_tabs.tabs('add', 'javascript:void(0)', channel, select);
 				var $tab_link = $('ul.ui-tabs-nav > li', $channel_tabs).eq(select).find('a').eq(0);
 				var tab_id = $tab_link.attr('href');
 				console.log("tab_id: %s", tab_id);
-				var $tab_content = $(tab_id);
+				var $tab_content = $(tab_id).addClass("tabs-contents").addClass("clearfix");
 				$tab_content.html(contents);
 				$channel_tabs.tabs('select', select);
 
+				// bind channel close
+				$('div.channel-close-btn', $tab_content).click(function(){
+					console.log("channel-close: tab_id=%s", tab_id);
+					if (!confirm('退出しますか？')) return false;
+				});
+
+				// ui initialize
+				$('div.sidebar > div.menu > div', $tab_content).hover(
+					function() { $(this).addClass('ui-state-hover'); },
+					function() { $(this).removeClass('ui-state-hover'); }
+				);
+
+				resize_ui();
 				$cha_dialog.dialog('close');
 			},
 			error: function(request, textStatus, errorThrown) {

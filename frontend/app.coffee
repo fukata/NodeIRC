@@ -10,6 +10,9 @@ mongoose = require 'mongoose'
 connectionManager = require './libs/connectionManager.coffee'
 connectionManager = new connectionManager.connectionManager()
 
+remnl = (str) ->
+	return str.replace(/\r\n/g,'').replace(/\r/g,'').replace(/\n/g,'').replace(/\t/g,'')
+
 ###
 Configuration
 ###
@@ -43,7 +46,12 @@ app.get '/', (req, res) ->
 
 app.post '/channel', (req, res) ->
 	res.contentType 'application/json'
-	res.render 'channel_add', {layout: false}
+	res.render 'channel_add', {
+		layout: false,
+		locals: {
+			contents:remnl res.render 'channel_contents', {layout:false, renderPartial:true}
+		}
+	}
 
 ###
 Only listen on $ node app.js
