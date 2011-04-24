@@ -110,6 +110,11 @@ $(function(){
 				console.log('channel-add success');
 				console.log(data);
 				$('.errors', $cha_dialog).hide();
+
+				var empty_tab_index = $('ul.ui-tabs-nav > li', $channel_tabs).index($('#empty-channel-tab').parent('li'));
+				console.log("empty_tab_index: %s", empty_tab_index);
+				if (empty_tab_index>=0) $channel_tabs.tabs('remove', empty_tab_index);
+
 				// add channel tab
 				var channel = data.channel;
 				var contents = $('<div></div>').html(data.contents).text();
