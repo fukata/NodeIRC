@@ -10,6 +10,7 @@ mongoose = require 'mongoose'
 connectionManager = require './libs/connectionManager.coffee'
 connectionManager = new connectionManager.connectionManager()
 
+# rmeove new line code and tab code
 remnl = (str) ->
 	return str.replace(/\r\n/g,'').replace(/\r/g,'').replace(/\n/g,'').replace(/\t/g,'')
 
