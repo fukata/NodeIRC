@@ -128,9 +128,33 @@ $(function(){
 				$channel_tabs.tabs('select', select);
 
 				// bind channel close
-				$('div.channel-close-btn', $tab_content).click(function(){
+				$('div.channel-close-btn', $tab_content).click(function(event){
+					var $self = $(this);
+					var tab_id = $self.parents('div.tabs-contents').eq(0).attr('id');
 					console.log("channel-close: tab_id=%s", tab_id);
-					if (!confirm('退出しますか？')) return false;
+					if ($('#empty-channel-tab').size()==0 && !confirm('退出しますか？')) return false;
+
+					// delete tab
+					console.log('ul.ui-tabs-nav > li > a[href="'+tab_id+'"]');
+					var delete_tab_index = $('ul.ui-tabs-nav > li', $channel_tabs).index($('ul.ui-tabs-nav > li > a[href="#'+tab_id+'"]', $channel_tabs).parent('li').eq(0));
+					console.log("delete_tab_index: %s", delete_tab_index);
+
+					// For additional tab only after the deletion, since they add a new dialog appears, once you disabled.
+					var tab_length = $channel_tabs.tabs('length');
+					if (tab_length == 2) {
+						$channel_tabs.tabs('disable', tab_length-1);
+					} else {
+						$channel_tabs.tabs('select', delete_tab_index-1);
+					}
+					$channel_tabs.tabs('remove', delete_tab_index);
+					$('#'+tab_id).remove();
+
+					if ($channel_tabs.tabs('length')==1) {
+						$channel_tabs.tabs('add', 'javascript:void(0)', '空', 0);
+						$('ul.ui-tabs-nav > li', $channel_tabs).eq(0).find('a').eq(0).attr('id', 'empty-channel-tab');
+						$channel_tabs.tabs('enable', tab_length-1);
+						$channel_tabs.tabs('select', 0);
+					}
 				});
 
 				// ui initialize
