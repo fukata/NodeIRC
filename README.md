@@ -6,4 +6,5 @@
     npm install io.socket
     npm install mongoose
     npm install underscore
+    npm install coffee-script
 ## Initialize Develop Environment
